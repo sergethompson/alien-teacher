@@ -69,11 +69,27 @@ export function setupParent({ board, getTeacher, lessons, settings, onChange, on
     onWake();
     dlg.close();
   });
-  dlg.querySelector('#reset').addEventListener('click', () => {
-    if (confirm('Erase all progress on this device?')) {
-      onReset();
-      render();
+  // Two taps to erase, confirmed in the panel itself (some embeds block confirm()).
+  const reset = dlg.querySelector('#reset');
+  const resetLabel = reset.textContent;
+  let armed = null;
+  const disarm = () => {
+    clearTimeout(armed);
+    armed = null;
+    reset.textContent = resetLabel;
+  };
+  reset.addEventListener('click', () => {
+    if (!armed) {
+      reset.textContent = 'Tap again to erase';
+      armed = setTimeout(disarm, 4000);
+      return;
     }
+    disarm();
+    onReset();
+    render();
+    reset.textContent = 'Progress erased';
+    setTimeout(() => (reset.textContent = resetLabel), 2000);
   });
+  dlg.addEventListener('close', disarm);
   dlg.querySelector('#close').addEventListener('click', () => dlg.close());
 }
