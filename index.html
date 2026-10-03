@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#0b0c10" />
+    <title>Alien Teacher</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="toy" aria-label="Alien Teacher light board">
+      <div class="screen">
+        <div id="grid" class="grid"></div>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span>A</span><span>l</span><span>i</span><span>e</span><span>n</span><span class="sep">·</span><span>T</span><span>e</span><span>a</span><span>c</span><span>h</span><span>e</span><span>r</span>
+      </div>
+    </main>
+
+    <dialog id="parent" aria-labelledby="parent-title">
+      <h2 id="parent-title">Grown-up panel</h2>
+      <p class="lede">
+        The alien only speaks in lights. Corners are its antennae: <b>blue</b> means “watch me”,
+        <b>breathing white</b> means “your turn”. A green ripple is “yes”, a soft amber blink is
+        “not quite”, and a shimmering dot is a hint.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Lesson</th><th>Skill</th><th>Level</th><th>Going well</th><th>Plays</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <label class="field">
+        Session length (minutes)
+        <input id="session-minutes" type="number" min="5" max="60" step="5" />
+      </label>
+      <div class="actions">
+        <button id="wake" type="button">Wake up / new session</button>
+        <button id="reset" type="button" class="quiet">Reset progress</button>
+        <button id="close" type="button" class="primary">Close</button>
+      </div>
+      <p class="fine">Progress is stored only on this device. Open this panel by tapping the four corners clockwise from top-left, or Shift+P.</p>
+    </dialog>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

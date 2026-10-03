@@ -1,0 +1,11 @@
+{
+  "name": "alien-teacher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A 10x10 light-grid toy where an alien teacher speaks only in dots of light.",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test tests/*.test.js"
+  }
+}
